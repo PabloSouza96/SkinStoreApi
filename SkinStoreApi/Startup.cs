@@ -32,6 +32,8 @@ namespace SkinStoreApi
                     options.UseMySql(Configuration.GetConnectionString("SkinStoreApiContext")));
 
             services.AddScoped<UserService>();
+            services.AddScoped<SkinService>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
