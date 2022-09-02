@@ -18,7 +18,23 @@ namespace SkinStoreApi.Services
 
         public async Task<List<User>> FindAllAsync()
         {
-            return await _context.User.OrderBy(x => x.Name).ToListAsync();
+            var lista = await _context.User.OrderBy(x => x.Name).ToListAsync();
+            foreach (var usuario in lista)
+            {
+                var usResultList = new List<UsResult>();
+                var usList = await _context.UserSkin.Where(x => x.CodeUser == usuario.Id).ToListAsync();
+                foreach (var dbUserSkin in usList)
+                {
+                    usResultList.Add(new UsResult
+                    {
+                        CodeSkin = dbUserSkin.CodeSkin,
+                        CodeUser = dbUserSkin.CodeUser,
+                        Id = dbUserSkin.Id
+                    });
+                }
+                usuario.UsResult = usResultList;
+            }
+            return lista;
         }
 
         public async Task InsertAsync(User obj)

@@ -35,6 +35,5 @@ namespace SkinStoreApi.Controllers
         {
             await _skinService.RemoveAsync(Key);
         }
-
     }
 }

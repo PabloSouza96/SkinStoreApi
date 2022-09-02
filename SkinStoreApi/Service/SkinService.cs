@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SkinStoreApi.Data;
 using SkinStoreApi.Models;
@@ -36,6 +35,7 @@ namespace SkinStoreApi.Services
             }
             else
             {
+                obj.Key = obj.Name.ToLower().Replace(" ","") + obj.Float.ToString();
                 _context.Add(obj);
                 await _context.SaveChangesAsync();
             }
@@ -50,6 +50,5 @@ namespace SkinStoreApi.Services
                 await _context.SaveChangesAsync();
             }
         }
-
     }
 }

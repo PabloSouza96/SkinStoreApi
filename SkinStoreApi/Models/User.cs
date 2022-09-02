@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SkinStoreApi.Models
@@ -31,5 +32,6 @@ namespace SkinStoreApi.Models
         [Column("User_Active")]
         public bool Active { get; set; }
 
+        public List<UsResult> UsResult { get; set; }
     }
 }
