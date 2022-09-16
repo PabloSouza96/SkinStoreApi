@@ -30,13 +30,5 @@ namespace SkinStoreApi.Controllers
                 return _mapService.FindComp(comp.Value);
             }
         }
-
-        ////Rota para buscar a lista de mapas competitivos
-        //[HttpGet]
-        //public Task<List<Map>> GetComp()
-        //{
-        //    var mapasComp = _mapService.FindComp();
-        //    return mapasComp;
-        //}
     }
 }
