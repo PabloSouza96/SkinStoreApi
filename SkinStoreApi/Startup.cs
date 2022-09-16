@@ -33,6 +33,8 @@ namespace SkinStoreApi
 
             services.AddScoped<UserService>();
             services.AddScoped<SkinService>();
+            services.AddScoped<MapService>();
+            services.AddScoped<PlayerService>();
 
         }
 

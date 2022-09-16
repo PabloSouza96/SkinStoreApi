@@ -17,6 +17,7 @@ namespace SkinStoreApi.Controllers
             _userService = userService;
         }
 
+        //Rota para buscar na lista de usuários
         [HttpGet]
         public Task<List<User>> Get()
         {
@@ -24,12 +25,14 @@ namespace SkinStoreApi.Controllers
             return usuarios;
         }
 
+        //Rota para receber um usuário como parametro
         [HttpPost]
         public async Task Post(User user)
         {
             await _userService.InsertAsync(user);
         }
 
+        //Rota para deletar um usuário pelo "Login"
         [HttpDelete]
         public async Task Delete(string Login)
         {

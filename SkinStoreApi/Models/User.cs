@@ -4,10 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SkinStoreApi.Models
 {
+    //Representando os dados com quais nossa aplicação vai trabalhar
     [Table("user_table")]
     public class User
     {
+        //Informando quem é a chave primária
         [Key]
+        //Configurando as colunas com nomes diferentes
         [Column("User_Id")]
         public int Id { get; set; }
 
@@ -32,6 +35,7 @@ namespace SkinStoreApi.Models
         [Column("User_Active")]
         public bool Active { get; set; }
 
+        //Listando a lista de UserSkin
         public List<UsResult> UsResult { get; set; }
     }
 }

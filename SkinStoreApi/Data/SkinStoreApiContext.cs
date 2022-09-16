@@ -12,5 +12,7 @@ namespace SkinStoreApi.Data
         public DbSet<User> User { get; set; }
         public DbSet<Skin> Skin { get; set; }
         public DbSet<UserSkin> UserSkin { get; set; }
+        public DbSet<Map> Map { get; set; }
+        public DbSet<Player> Player { get; set; }
     }
 }

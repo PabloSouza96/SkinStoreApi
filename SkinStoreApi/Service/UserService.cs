@@ -16,11 +16,13 @@ namespace SkinStoreApi.Services
             _context = context;
         }
 
+        //Buscando usuários pelo "Name" na tabela User
         public async Task<List<User>> FindAllAsync()
         {
             var lista = await _context.User.OrderBy(x => x.Name).ToListAsync();
             foreach (var usuario in lista)
             {
+                //
                 var usResultList = new List<UsResult>();
                 var usList = await _context.UserSkin.Where(x => x.CodeUser == usuario.Id).ToListAsync();
                 foreach (var dbUserSkin in usList)
@@ -37,9 +39,11 @@ namespace SkinStoreApi.Services
             return lista;
         }
 
+        //Buscando usuários pelo "Login" na tabela User
         public async Task InsertAsync(User obj)
         {
             var userBanco = _context.User.Where(x => x.Login.ToLower() == obj.Login.ToLower()).FirstOrDefault();
+            //Atualizando o usuário caso ele já exista
             if (userBanco != null)
             {
                 userBanco.Name = obj.Name;
@@ -51,6 +55,7 @@ namespace SkinStoreApi.Services
                 _context.Update(userBanco);
                 await _context.SaveChangesAsync();
             }
+            //Inserindo um usuário caso ele não exista
             else
             {
                 _context.Add(obj);
@@ -58,9 +63,11 @@ namespace SkinStoreApi.Services
             }
         }
 
+        //Buscando usuários pelo "Login" na tabela User
         public async Task RemoveAsync(string Login)
         {
             var userBanco = _context.User.Where(x => x.Login.ToLower() == Login.ToLower()).FirstOrDefault();
+            //Deletando o usuário caso ele exista
             if (userBanco != null)
             {
                 _context.Remove(userBanco);

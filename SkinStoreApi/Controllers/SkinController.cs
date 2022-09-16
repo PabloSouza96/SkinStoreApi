@@ -17,6 +17,7 @@ namespace SkinStoreApi.Controllers
             _skinService = skinService;
         }
 
+        //Rota para buscar a lista de produtos
         [HttpGet]
         public Task<List<Skin>> Get()
         {
@@ -24,12 +25,14 @@ namespace SkinStoreApi.Controllers
             return produtos;
         }
 
+        //Rota para receber uma skin como parametro
         [HttpPost]
         public async Task Post(Skin skin)
         {
             await _skinService.InsertAsync(skin);
         }
 
+        //Rota para deletar uma skin pela "Key"
         [HttpDelete]
         public async Task Delete(string Key)
         {

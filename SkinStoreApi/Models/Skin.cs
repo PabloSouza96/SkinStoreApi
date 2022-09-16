@@ -3,10 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SkinStoreApi.Models
 {
+    //Representando os dados com quais nossa aplicação vai trabalhar
     [Table("skin_table")]
     public class Skin
     {
+        //Informando quem é a chave primária
         [Key]
+        //Configurando as colunas com nomes diferentes
         [Column("Skin_Id")]
         public int Id { get; set; }
 
